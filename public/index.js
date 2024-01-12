@@ -1,5 +1,5 @@
-const apiKey = "c865ac5dd88e4d52967105539232812 ";
-const apiUrl = "http://api.weatherapi.com/v1/current.json";
+const apiKey = "c865ac5dd88e4d52967105539232812";
+const apiUrl = "https://api.weatherapi.com/v1/current.json";
 
 
 
@@ -8,6 +8,9 @@ const locationInput = document.getElementById('locationInput');
 const searchButton = document.getElementById('searchButton');
 const locationElement = document.getElementById('location');
 const temperatureElement = document.getElementById('temperature');
+const infoTempElement = document.getElementById('infoTemp')
+const windElement = document.getElementById('windElement')
+const humidityElement = document.getElementById('humidityElement')
 const descriptionElement = document.getElementById('description');
 const currentLocation = "";
 const currentTemp = 0;
@@ -32,17 +35,26 @@ function fetchWeather(location) {
                 const locationName = data.location.name;
                 const temperature = data.current.temp_c;
                 const description = data.current.condition.text;
+                const infoTemp = `${data.current.temp_c} °C`;
+                const infoWind = `${data.current.wind_kph} m/s`;
+                const infoHumidity = `${data.current.humidity} %`;
                 const weatherIcon = data.current.condition.icon;
 
                 // Update text content
-                locationElement.textContent = `Location: ${locationName}`;
-                temperatureElement.textContent = `Temperature: ${temperature}°C`;
-                descriptionElement.textContent = `Description: ${description}`;
-
-                // Update image based on weather condition
+                locationElement.textContent = locationName;
+                temperatureElement.textContent = temperature;
+                descriptionElement.textContent = description;
+                infoTempElement.textContent = infoTemp;
+                windElement.textContent = infoWind;
+                humidityElement.textContent = infoHumidity;
+                //Update image based on weather condition
                 const weatherImage = document.getElementById('weatherImage');
-                weatherImage.src = `http:${weatherIcon}`;
+                weatherImage.src = `https:${weatherIcon}`;
                 weatherImage.alt = `${description} Weather`;
+                //For info panel
+                const infoWeatherImage = document.getElementById('infoWeatherImage');
+                infoWeatherImage.src = `https:${weatherIcon}`;
+                infoWeatherImage.alt = `${description} Weather`;
             }
         })
         .catch(error => {
