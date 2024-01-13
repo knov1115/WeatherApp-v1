@@ -23,5 +23,6 @@ but I'm open to any suggestions you might have through my discord: kresa.
 
 ## Credit
 I started developing this app with a coding buddy: @Verid2 (Ficsur.Gergely)
+
 Special thanks to @M4tt1-Coder (Matti) for helping me out with resources and reviewing the code:)
 
