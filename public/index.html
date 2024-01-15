@@ -5,7 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherApp TEST</title>
     <link href="style.css" rel="stylesheet">
+
 </head>
+
+<!--Animations-->
+<style>
+  @keyframes des{
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  .description {
+    animation: des 1.0s ease-in-out 1;
+  }
+  
+  @keyframes float-box1 {
+    0% { opacity: 0; transform: translate(80px); }
+    33% { opacity: 1; transform: translate(0px); }
+  }
+
+  @keyframes float-box2 {
+    33% { opacity: 0; transform: translate(80px); }
+    66% { opacity: 1; transform: translate(0px); }
+  }
+
+  @keyframes float-box3 {
+    66% { opacity: 0; transform: translate(80px); }
+    100% { opacity: 1; transform: translate(0px); }
+  }
+
+  .box1 {
+    animation: float-box1 3.6s ease-in-out 1;
+  }
+
+  .box2 {
+    animation: float-box2 1.8s ease-in-out 1;
+  }
+
+  .box3 {
+    animation: float-box3 1.3s ease-in-out 1;
+  }
+
+</style>
 <body
     style="background-image: url('../images/23283.jpg');"
     class="bg-center bg-cover bg-no-repeat min-h-screen w-full flex flex-col gap-5 items-center justify-start p-10">
@@ -27,12 +68,10 @@
         required
         class="py-2 px-3 w-full rounded-full bg-white text-white text-lg outline outline-2 backdrop-blur-lg ease-in-out duration-300 outline-white/70 focus:bg-white/20"
       />
-      <button type="button" id="searchButton">
-        <ion-icon
-          class="text-white font-black text-2xl p-3 bg-white/50 rounded-full"
-          name="search"
-        ></ion-icon>
+      <button type="button" id="searchButton" class="hover:bg-blue-700 text-white font-black text-2xl p-3 rounded-full">
+        <ion-icon name="search"></ion-icon>
       </button>
+      
     </form>
 
     <!-- Home city card -->
@@ -47,7 +86,7 @@
         <p class="font-semibold text-xl text-white" id="location">London</p>
       </div>
       <div id="right" class="flex justify-end items-center">
-        <img class="w-28 h-4w-28" src="../images/weather-icon-png-5.png" alt="" id="weatherImage" />
+        <img class="w-28 h-4w-28" src="../images/weather-icon-png-5.png" alt="" id="weatherImage"/>
       </div>
     </div>
 
@@ -57,17 +96,18 @@
     >
       <div id="left" class="flex flex-col justify-start">
         <!-- Icon -->
-        <img class="size-28" src="../images/weather-icon-png-5.png" alt="weather icon" id="infoWeatherImage" />
+        <img class="size-28" src="../images/weather-icon-png-5.png" alt="weather icon" id="infoWeatherImage"/>
         <!-- Weather -->
-        <p class="font-bold text-4xl text-white" id="description">Rainy</p>
+        <p class="font-bold text-4xl text-white transition-all duration-500" id="description">Rainy</p>
         <!-- Description -->
         <p class="font-semibold text-white"></p>
       </div>
       <div id="right" class="w-1/2 flex-col space-y-2">
         <!-- Temperature -->
         <div
-          class="flex w-full justify-around items-center bg-white/30 rounded-lg p-1 gap-6" id="temperature"
+          class="flex w-full justify-around items-center bg-white/30 rounded-lg p-1 gap-6 box1" id="temperature-box"
         >
+        <!--ICONS-->
           <ion-icon class="w-8 h-8 text-white" name="thermometer"></ion-icon>
           <div class="">
             <p class="font-bold text-2xl text-right text-[#ff5a00]" id="infoTemp">20 °C</p>
@@ -76,7 +116,7 @@
         </div>
         <!-- Wind Speed -->
         <div
-          class="flex w-full justify-around items-center bg-white/30 rounded-lg p-1 gap-6"
+          class="flex w-full justify-around items-center bg-white/30 rounded-lg p-1 gap-6 box2" id="wind-box"
         >
           <ion-icon class="w-8 h-8 text-white" name="speedometer"></ion-icon>
           <div class="">
@@ -86,7 +126,7 @@
         </div>
         <!-- Humidity -->
         <div
-          class="flex w-full justify-around items-center bg-white/30 rounded-lg p-1 gap-6"
+          class="flex w-full justify-around items-center bg-white/30 rounded-lg p-1 gap-6 box3" id="humidity-box"
         >
           <ion-icon class="w-8 h-8 text-white" name="rainy"></ion-icon>
           <div class="">
@@ -96,6 +136,7 @@
         </div>
       </div>
     </div>
+    <!-- ICONS -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -104,6 +145,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <!--JS-->
     <script src="index.js"></script>
   </body>
 </html>

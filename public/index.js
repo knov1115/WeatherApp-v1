@@ -12,15 +12,62 @@ const infoTempElement = document.getElementById('infoTemp')
 const windElement = document.getElementById('windElement')
 const humidityElement = document.getElementById('humidityElement')
 const descriptionElement = document.getElementById('description');
+const weatherImage = document.getElementById('weatherImage');
+const infoWeatherImage = document.getElementById('infoWeatherImage');
+const temperatureBoxElement = document.getElementById('temperature-box');
+const windBoxElement = document.getElementById('wind-box');
+const humidityBoxElement = document.getElementById('humidity-box');
 const currentLocation = "";
 const currentTemp = 0;
 
+// Search btn
 searchButton.addEventListener('click', () => {
     const location = locationInput.value;
     if (location) {
         fetchWeather(location);
+        startAnimation();
     }
 });
+
+
+function startAnimation() {
+    //Description
+    descriptionElement.classList.toggle('description')
+    setTimeout(() => {
+        descriptionElement.classList.toggle('description')
+    }, 2000);
+    //home-card-icon
+    weatherImage.classList.toggle('description')
+    setTimeout(() => {
+        weatherImage.classList.toggle('description')
+    }, 2000);
+    //info-panel-icon
+    infoWeatherImage.classList.toggle('description')
+    setTimeout(() => {
+        infoWeatherImage.classList.toggle('description')
+    }, 2000);
+    // info-panel-data
+    //TEMP
+    temperatureBoxElement.classList.toggle('box1')
+    setTimeout(() => {
+        temperatureBoxElement.classList.toggle('box1')
+    });
+    //WIND
+    windBoxElement.classList.toggle('box2')
+    setTimeout(() => {
+        windBoxElement.classList.toggle('box2')
+    });
+    //HUMIDITY
+    humidityBoxElement.classList.toggle('box3')
+    setTimeout(() => {
+        humidityBoxElement.classList.toggle('box3')
+    });
+
+
+    
+};
+
+
 
 
 function fetchWeather(location) {
@@ -55,10 +102,13 @@ function fetchWeather(location) {
                 const infoWeatherImage = document.getElementById('infoWeatherImage');
                 infoWeatherImage.src = `https:${weatherIcon}`;
                 infoWeatherImage.alt = `${description} Weather`;
+                
             }
         })
         .catch(error => {
             console.error('Error fetching weather data:', error);
         });
 }
+
+
 
